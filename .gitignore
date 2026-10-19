@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+data/warehouse.sqlite3
+# Per-developer AI tool and editor settings
+.claude/settings.local.json
+.vscode/
+.idea/
