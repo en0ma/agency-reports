@@ -1,0 +1,4 @@
+segment_id,agency,route,direction,segment_name,start_mm,end_mm,added_at
+seg_1,IN-DOT,I-65,NB,I-65 NB MM 100-110,100,110,2026-06-15T00:00:00Z
+seg_2,IN-DOT,I-70,EB,I-70 EB MM 50-60,50,60,2026-06-15T00:00:00Z
+seg_3,IA-DOT,I-80,WB,I-80 WB MM 140-150,140,150,2026-06-15T00:00:00Z

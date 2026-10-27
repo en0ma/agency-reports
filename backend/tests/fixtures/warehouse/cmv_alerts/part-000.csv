@@ -1,0 +1,12 @@
+alert_id,agency,segment_id,alert_ts_utc,alert_type,vehicle_id,is_test
+a01,IN-DOT,seg_1,2026-10-29T23:59:59Z,slowdown_ahead,veh_a,0
+a02,IN-DOT,seg_1,2026-10-30T00:00:00Z,slowdown_ahead,veh_a,0
+a03,IN-DOT,seg_1,2026-10-30T12:00:00Z,queue_warning,veh_b,0
+a04,IN-DOT,seg_2,2026-10-30T13:00:00Z,work_zone,veh_c,0
+a05,IN-DOT,seg_2,2026-10-30T14:00:00Z,slowdown_ahead,veh_test1,1
+a06,IN-DOT,seg_1,2026-10-31T08:00:00Z,hard_braking,veh_b,0
+a07,IN-DOT,seg_2,2026-10-31T09:00:00Z,slowdown_ahead,veh_test1,1
+a08,IN-DOT,seg_1,2026-11-01T05:59:59Z,slowdown_ahead,veh_d,0
+a09,IN-DOT,seg_1,2026-11-01T06:00:00Z,slowdown_ahead,veh_d,0
+a10,IA-DOT,seg_3,2026-10-30T15:00:00Z,slowdown_ahead,veh_x,0
+a11,IA-DOT,seg_3,2026-10-31T15:00:00Z,queue_warning,veh_y,0
