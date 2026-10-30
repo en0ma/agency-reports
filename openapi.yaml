@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: Agency Reports API
+  version: 0.1.0
+paths:
+  /api/cmv-alerts/daily-alerts:
+    get:
+      operationId: cmv_alerts_daily_alerts_retrieve
+      description: 'Daily alert totals for one agency over the selected range. Panel:
+        "Alerts per day".'
+      parameters:
+      - in: query
+        name: agency
+        schema:
+          type: string
+          minLength: 1
+          pattern: ^[A-Z]{2}-DOT$
+        description: Agency code, e.g. IN-DOT
+        required: true
+      - in: query
+        name: range
+        schema:
+          enum:
+          - 7d
+          - 30d
+          - 90d
+          type: string
+          default: 30d
+          minLength: 1
+        description: |-
+          * `7d` - 7d
+          * `30d` - 30d
+          * `90d` - 90d
+      tags:
+      - cmv-alerts
+      security:
+      - demoUser: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyAlertsResponse'
+          description: ''
+  /api/health:
+    get:
+      operationId: health_retrieve
+      tags:
+      - health
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+          description: ''
+  /api/me:
+    get:
+      operationId: me_retrieve
+      description: Who the caller is and which agencies they may pick in the UI.
+      tags:
+      - me
+      security:
+      - demoUser: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeResponse'
+          description: ''
+components:
+  schemas:
+    AgencySummary:
+      type: object
+      properties:
+        agency:
+          type: string
+        name:
+          type: string
+      required:
+      - agency
+      - name
+    DailyAlertCount:
+      type: object
+      properties:
+        day:
+          type: string
+          description: Calendar day, YYYY-MM-DD
+        alerts:
+          type: integer
+      required:
+      - alerts
+      - day
+    DailyAlertsResponse:
+      type: object
+      description: GET /api/cmv-alerts/daily-alerts
+      properties:
+        agency:
+          type: string
+        range:
+          $ref: '#/components/schemas/RangeEnum'
+        data_as_of:
+          type: string
+          description: ISO timestamp of the last ETL run that wrote the data
+        generated_at:
+          type: string
+          format: date-time
+          description: When the backend built this response
+        total:
+          type: integer
+        per_day:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyAlertCount'
+      required:
+      - agency
+      - data_as_of
+      - generated_at
+      - per_day
+      - range
+      - total
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+      required:
+      - status
+    MeResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+        display_name:
+          type: string
+        internal:
+          type: boolean
+        agencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgencySummary'
+      required:
+      - agencies
+      - display_name
+      - internal
+      - user_id
+    RangeEnum:
+      enum:
+      - 7d
+      - 30d
+      - 90d
+      type: string
+      description: |-
+        * `7d` - 7d
+        * `30d` - 30d
+        * `90d` - 90d
+    StatusEnum:
+      enum:
+      - ok
+      type: string
+      description: '* `ok` - ok'
+  securitySchemes:
+    demoUser:
+      type: apiKey
+      in: header
+      name: X-Demo-User

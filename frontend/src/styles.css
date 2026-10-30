@@ -1,0 +1,169 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1c2330;
+  --muted: #5b6575;
+  --border: #dde1e7;
+  --accent: #1f5fbf;
+  --danger: #b42318;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 56px 1fr;
+  min-height: 100vh;
+}
+
+.shell__header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.shell__title {
+  font-weight: 600;
+}
+
+.shell__user {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.shell__nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 8px;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.shell__nav a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.shell__nav a.active {
+  background: #e8effa;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.shell__main {
+  padding: 24px;
+}
+
+.report {
+  display: grid;
+  gap: 16px;
+  max-width: 1100px;
+}
+
+.report__header h1 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.report__as-of {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.report__tiles {
+  display: flex;
+  gap: 16px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+select {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.stat-tile,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.stat-tile__label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-tile__value {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.panel__header h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.panel__loading,
+.panel__empty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.panel__error {
+  color: var(--danger);
+}
+
+.daily-chart {
+  width: 100%;
+  height: 160px;
+}
+
+.daily-chart rect {
+  fill: var(--accent);
+}
