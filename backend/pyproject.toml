@@ -11,6 +11,6 @@ target-version = "py310"
 select = ["E", "F", "W", "I", "B", "UP", "DJ", "SIM", "RUF"]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "agency_reports.settings"
+DJANGO_SETTINGS_MODULE = "agency_reports.test_settings"
 testpaths = ["tests"]
 addopts = "-q"
